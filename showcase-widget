@@ -1,0 +1,16 @@
+<?php
+/**
+ * Plugin Name: Showcase Widget Plugin
+ * Description: Simple Showcase Area
+ * Version: 1.0
+ * Author: Carolyn Hemmings
+ */
+// Include class
+include('class.showcase-widget.php');
+
+// Register widget
+function register_showcase_widget() {
+    register_widget('Showcase_Widget');
+}
+
+add_action('widgets_init', 'register_showcase_widget');
