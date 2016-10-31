@@ -7,7 +7,7 @@ class Showcase_Widget extends WP_Widget {
     public function __construct() {
         parent::__construct(
             'showcase_widget', // Base ID
-            __('Showcase Widget', 'text_domain'), // Name
+            __('Showcase Widget', 's_text_domain'), // Name
             array('description' => __('A widget to display showcase content', 'text_domain'),) // Args
         );
     }
@@ -20,22 +20,22 @@ class Showcase_Widget extends WP_Widget {
      */
     public function widget( $args, $instance ) {
         // outputs the content of the widget
-        $title = apply_filters('widget_title', $instance['title']);
-        $heading = $instance['heading'];
-        $text = $instance['text'];
+        $s_title = apply_filters('widget_title', $instance['title']);
+        $s_heading = $instance['heading'];
+        $s_text = $instance['text'];
 
         echo $args['before_widget'];
-        if (!empty($title))
-            echo $args['before_title'] . $title . $args['after_title'];
+        if (!empty($s_title))
+            echo $args['before_title'] . $s_title . $args['after_title'];
         // Display Content
-        echo $this->getContent($heading, $text);
+        echo $this->getContent($s_heading, $s_text);
         echo $args['after_widget'];
     }
 
-    public function getContent($heading, $text) {
+    public function getContent($s_heading, $s_text) {
         $output = '
-    <h1>'.$heading.'</h1>
-    <p>'.$text.'</p>
+    <h1>'.$s_heading.'</h1>
+    <p>'.$s_text.'</p>
         <button class="button">Start Shopping</button>';
 
         // Return Output String
@@ -50,31 +50,31 @@ class Showcase_Widget extends WP_Widget {
     public function form( $instance ) {
         // outputs the options form on admin
         if(isset($instance['title'])) {
-            $title = $instance['title'];
+            $s_title = $instance['title'];
         }
         else {
-            $title = __('Showcase Widget', 'text_domain');
+            $s_title = __('Showcase Widget', 's_text_domain');
         }
-        $heading = $instance['heading'];
-        $text = $instance['text'];
+        $s_heading = $instance['heading'];
+        $s_text = $instance['text'];
         ?>
             <p>
                 <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
                 <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>"
                        name="<?php echo $this->get_field_name('title'); ?>" type="text" value="
-                        <?php echo esc_attr($title); ?>">
+                        <?php echo esc_attr($s_title); ?>">
             </p>
         <p>
             <label for="<?php echo $this->get_field_id('heading'); ?>"><?php _e('Heading:'); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id('heading'); ?>"
                    name="<?php echo $this->get_field_name('heading'); ?>" type="text" value="
-                        <?php echo esc_attr($heading); ?>">
+                        <?php echo esc_attr($s_heading); ?>">
         </p>
         <p>
             <label for="<?php echo $this->get_field_id('text'); ?>"><?php _e('Text:'); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id('text'); ?>"
                    name="<?php echo $this->get_field_name('text'); ?>" type="text" value="
-                        <?php echo esc_attr($text); ?>">
+                        <?php echo esc_attr($s_text); ?>">
         </p>
         <?php
     }
